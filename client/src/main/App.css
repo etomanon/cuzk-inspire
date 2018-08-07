@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  padding: 86px 0 0 0;
+  font-family: sans-serif;
+}
+
+.pointer-active {
+  cursor: pointer;
+}
+
+.nav-link-custom {
+  color: #000;
+}
+
+.nav-link-custom:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.api-row {
+  white-space: nowrap;
+}
+
+.table {
+  text-align: left;
+}
+
+pre {
+  text-align: left
+}
+
+.modal-title-custom {
+  width: 100%;
+  margin-left: 2rem;
+}
+
+.form-control.search-hint {
+  display: flex;
+  cursor: pointer;
+}
+
+.search-hint:hover {
+  background: #f8f9fa
+}
+
+.form-control.search-hint--active {
+  background: #f8f9fa
+}
+
+.search-hint > div:first-child {
+  margin-right: auto;
+}
+
+
+.search-hint > div:nth-child(2) {
+  margin-left: auto;
+}

@@ -1,0 +1,45 @@
+.info-title {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%); 
+    word-wrap: break-word;
+    padding: 0.5rem;
+    background: #17A2B8;
+    color: #fff;
+    margin-bottom: 1rem;
+    opacity: 0;
+    cursor: default;
+    font-size: 1rem;
+    line-height: 1.25;
+    border-radius: 0.15rem;
+    transition: all .3s ease-in;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.info-title::after {
+    position: absolute;
+    content: '';
+    bottom: 1px;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.75rem 0.75rem 0 0.75rem;
+    border-color: #17A2B8 transparent transparent transparent;
+}
+
+.info-icon {
+    position: relative;
+    cursor: pointer;
+    padding: 0.25rem;
+    font-size: 1.25rem;
+}
+
+.info-icon:hover .info-title  {
+    opacity: 1;
+    bottom: 100%;
+}

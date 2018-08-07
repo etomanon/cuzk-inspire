@@ -1,0 +1,10 @@
+.checkbox-info > div {
+    display: inline-block;
+}
+
+@media (max-width: 500px) {
+    .checkbox-info {
+        display: flex;
+        flex-direction: column;
+    }
+}

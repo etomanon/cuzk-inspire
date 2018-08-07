@@ -1,0 +1,27 @@
+.profile-copy {
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.api-popup {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    text-align: center;
+    background: #fff;
+    color: #000;
+    transition: all .3s ease-in-out;
+}
+
+.api-popup span {
+    width: 100%;
+}
+
+.api-show {
+    left: 0;
+}

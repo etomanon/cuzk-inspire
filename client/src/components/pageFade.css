@@ -1,0 +1,21 @@
+.fadeTranslate-enter {
+    opacity: 0;
+    top: 25px;
+    position: relative;
+  }
+  
+  .fadeTranslate-enter.fadeTranslate-enter-active {
+    opacity: 1;
+    top: 0;
+    transition: all 400ms ease-in-out;
+  }
+  
+  .fadeTranslate-exit {
+    opacity: 1;
+    position: absolute;
+    top: 0;
+  }
+  
+  .fadeTranslate-exit.fadeTranslate-exit-active {
+    opacity: 0;
+  }
