@@ -16,19 +16,19 @@ export default function (state = {
         case USER_GET + '_FULFILLED':
             return { ...state, profile: action.payload.data, pending: false, error: false }
         case USER_GET + '_REJECTED':
-            return { ...state, profile: { ...state.profile }, error: true }
+            return { ...state, profile: { ...state.profile }, error: true, pending: false }
         case USER_FORMAT + '_PENDING':
             return { ...state, profile: { ...state.profile }, pending: true }
         case USER_FORMAT + '_FULFILLED':
             return { ...state, profile: { ...state.profile, format: action.payload.data.format }, pending: false, error: false }
         case USER_FORMAT + '_REJECTED':
-            return { ...state, profile: { ...state.profile }, error: true }
+            return { ...state, profile: { ...state.profile }, error: true, pending: false }
         case USER_SRS + '_PENDING':
             return { ...state, profile: { ...state.profile }, pending: true }
         case USER_SRS + '_FULFILLED':
             return { ...state, profile: { ...state.profile, srs: action.payload.data.srs }, pending: false, error: false }
         case USER_SRS + '_REJECTED':
-            return { ...state, profile: { ...state.profile }, error: true }
+            return { ...state, profile: { ...state.profile }, error: true, pending: false }
         default:
             return state;
     }

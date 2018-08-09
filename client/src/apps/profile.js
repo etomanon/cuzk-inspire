@@ -55,7 +55,7 @@ class Profile extends Component {
   }
 
   render() {
-    const profile = this.props.user.profile
+    const profile = this.props.user.profile;
     return (
       <div>
         <Loader

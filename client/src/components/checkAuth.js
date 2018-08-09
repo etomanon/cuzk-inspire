@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom'
+import { bindActionCreators } from 'redux';
+import { userGet } from '../actions/index';
+
+import Loader from 'src/components/loader'
 
 class CheckAuth extends Component {
 
+    componentDidMount() {
+        this.props.userGet();
+    }
+
     render() {
-        const profile = this.props.user.profile;
-        if (!profile.user && this.props.location.pathname !== '/') {
+        if (!this.props.user.profile.user && publicRoutes.indexOf(this.props.location.pathname) !== -1) {
             return (
-                <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col">
-                            <div className="bg-danger text-white p-4 mt-4">
-                                Please, log in.
+                <div>
+                    <Loader
+                        loading={this.props.user.pending}
+                        instant={true}
+                    />
+                    {
+                        this.props.user.error &&
+                        <div className="container">
+                            <div className="row align-items-center">
+                                <div className="col">
+                                    <div className="bg-danger text-white p-4 mt-4">
+                                        Please, log in.
                                 </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             )
         }
@@ -25,10 +40,16 @@ class CheckAuth extends Component {
     }
 }
 
+const publicRoutes = ["/", "/error"]
+
 function mapStateToProps(state) {
     return {
         user: state.user
     };
 }
 
-export default withRouter(connect(mapStateToProps)(CheckAuth));
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ userGet }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckAuth);

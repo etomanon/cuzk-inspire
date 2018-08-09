@@ -12,14 +12,18 @@ const passport = require('passport');
 const passportSetup = require('./config/passport');
 
 mongoose.connect(process.env.DB_HOST);
-// encrypt cookie
-app.use(session({
+
+// cookies
+const sessionOptions = {
     secret: process.env.COOKIE_KEY,
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
-    // cookie: { secure: true }
-}));
+};
+if(process.env.NODE_ENV === 'production') {
+    sessionOptions.cookie = { secure: true };
+}
+app.use(session(sessionOptions));
 
 // init passport
 app.use(passport.initialize());
@@ -53,14 +57,14 @@ app.use('/api/profile', profileRoutes);
 app.use('/api/admin-units', adminUnitsRoutes);
 app.use('/api/buildings', buildingsRoutes);
 
-// if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
     // Serve any static files
     app.use(express.static(path.join(__dirname, 'client/build')));
     // Handle React routing, return all requests to React app
     app.get('*', function (req, res) {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
-// }
+}
 
 app.use((error, req, res, next) => {
     res.status(error.status || 500);

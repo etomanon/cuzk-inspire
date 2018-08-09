@@ -23,11 +23,16 @@ class Loader extends Component {
     }
 
     loading = () => {
-        setTimeout(() => {
-            if (this.props.loading) {
-                this.show();
-            }
-        }, 2000);
+        if (this.props.instant) {
+            this.show();
+        }
+        else {
+            setTimeout(() => {
+                if (this.props.loading) {
+                    this.show();
+                }
+            }, 2000);
+        }
     }
 
     show = () => {
@@ -42,10 +47,10 @@ class Loader extends Component {
         if (this.props.loading && this.state.show) {
             return (
                 <div className="loading">
-                        <div class="loading__bar"></div>
-                        <div class="loading__bar"></div>
-                        <div class="loading__bar"></div>
-                        <div class="loading__bar"></div>
+                    <div className="loading__bar"></div>
+                    <div className="loading__bar"></div>
+                    <div className="loading__bar"></div>
+                    <div className="loading__bar"></div>
                 </div>
             )
         }
