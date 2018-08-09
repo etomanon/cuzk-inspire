@@ -21,7 +21,7 @@ const sessionOptions = {
     store: new MongoStore({ mongooseConnection: mongoose.connection })
 };
 if(process.env.NODE_ENV === 'production') {
-    sessionOptions.cookie = { secure: true };
+    // sessionOptions.cookie = { secure: true };
 }
 app.use(session(sessionOptions));
 

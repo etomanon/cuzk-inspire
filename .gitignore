@@ -3,3 +3,7 @@
 
 /client/node_modules
 /client/build
+
+# https
+server.cert
+server.key
