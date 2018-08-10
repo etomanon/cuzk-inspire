@@ -132,7 +132,7 @@ class ApiForm extends Component {
     render = () => {
         return (this.props.profile && <form ref={el => this.formRef = el}
             method="post" action={this.props.action}
-            className="row justify-content-center mt-2 mb-4"
+            className="row justify-content-center mb-4"
             onSubmit={this.setAdminForm} >
             <div className="col-lg-5">
                 <div className="form-group mb-0" style={{ position: "relative" }}>

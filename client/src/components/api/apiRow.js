@@ -10,7 +10,7 @@ class ApiRow extends Component {
         <td className="api-row">
           <button type="button" onClick={() => {
             this.props.sendRequest(this.props.request, this.props.url)
-          }} className="btn btn-primary" data-toggle="modal" data-target="#responseModal">
+          }} className="btn btn-danger" data-toggle="modal" data-target="#responseModal">
             Sample request</button>
         </td>
       </tr>

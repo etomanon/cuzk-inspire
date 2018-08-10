@@ -6,7 +6,7 @@ class Card extends Component {
         return (
             <div className="card card-custom">
                 <div className="card-body">
-                    <i className={`card-icon ${this.props.icon}`}></i>
+                    <i className={`card-icon text-danger ${this.props.icon}`}></i>
                     <h5 className="card-title">{this.props.title}</h5>
                     <p className="card-text">{this.props.text}</p>
                 </div>

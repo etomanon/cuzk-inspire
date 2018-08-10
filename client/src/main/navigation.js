@@ -81,7 +81,6 @@ class Navigation extends Component {
             className="navbar-brand text-primary align-middle"
           >
             <i className="fas fa-database"></i>
-            <div>API</div>
           </NavLink>
           <button className="navbar-toggler" type="button"
             data-toggle="collapse" data-target="#navbarToggler"

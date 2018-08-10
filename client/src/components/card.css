@@ -8,13 +8,8 @@
 }
 
 .card-icon {
-    color: #007bff;
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
-}
-
-.card-custom:hover .card-title {
-    color: #007bff;
 }
 
 .card-title {

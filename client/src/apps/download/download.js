@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 
 import Sources from 'src/components/sources';
+import ApiHeader from 'src/components/api/apiHeader';
 
 class Download extends Component {
     render() {
         return (
-            <div className='container'>
-                <div className="row m-4">
-                    <div className="col-lg">
-                        <div className="h3">Choose data source</div>
-                        <hr />
-                    </div>
-                </div>
+            <div className="container">
+                <ApiHeader title="Choose data source" />
                 <Sources />
             </div>
         )

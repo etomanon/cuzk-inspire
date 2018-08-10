@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import { TransitionGroup } from 'react-transition-group';
 import { Redirect } from 'react-router-dom';
 
-import './App.css';
 import Navigation from 'src/main/navigation';
 import Home from 'src/apps/home';
 import Footer from 'src/main/footer';
@@ -15,6 +14,9 @@ import Error404 from 'src/apps/error404';
 
 import CheckAuth from 'src/components/checkAuth';
 import PageFade from 'src/components/pageFade';
+
+import './App.css';
+import './Bootstrap.css';
 
 class App extends Component {
   render() {

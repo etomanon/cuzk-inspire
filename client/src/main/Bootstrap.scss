@@ -1,0 +1,10 @@
+$theme-colors: (
+  "primary": #5E239D,
+  "danger": #F61067
+);
+
+$enable-rounded: false;
+
+$font-family-sans-serif: 'Libre Franklin', Roboto, "Helvetica Neue", Arial, sans-serif;
+
+@import '../bootstrap/bootstrap.scss';
