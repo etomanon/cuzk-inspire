@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import _ from 'lodash'
-import { bindActionCreators } from 'redux'
-import { userGet } from '../actions/index'
 import './navigation.css';
 
 class Navigation extends Component {
@@ -14,7 +12,6 @@ class Navigation extends Component {
   }
 
   componentDidMount() {
-    this.props.userGet();
     window.addEventListener('scroll', this.handleScroll);
   }
 
@@ -116,8 +113,4 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ userGet }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
+export default connect(mapStateToProps)(Navigation);

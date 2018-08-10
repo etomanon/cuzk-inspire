@@ -1,26 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { userGet } from '../actions/index';
+import { authGet, userGet } from '../actions/index';
 
 import Loader from 'src/components/loader'
 
 class CheckAuth extends Component {
 
     componentDidMount() {
-        this.props.userGet();
+        this.props.authGet();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.props.authGet();
+        }
+        if(this.props.auth.auth && !this.props.user.profile.email && 
+            !this.props.user.pending && !this.props.user.error) {
+            this.props.userGet()
+        }
     }
 
     render() {
-        if (!this.props.user.profile.user && publicRoutes.indexOf(this.props.location.pathname) !== -1) {
+        if (!this.props.auth.auth && publicRoutes.indexOf(this.props.location.pathname) === -1) {
             return (
                 <div>
                     <Loader
-                        loading={this.props.user.pending}
+                        loading={this.props.auth.pending}
                         instant={true}
                     />
                     {
-                        this.props.user.error &&
+                        this.props.auth.error &&
                         <div className="container">
                             <div className="row align-items-center">
                                 <div className="col">
@@ -44,12 +54,13 @@ const publicRoutes = ["/", "/error"]
 
 function mapStateToProps(state) {
     return {
-        user: state.user
+        user: state.user,
+        auth: state.auth
     };
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ userGet }, dispatch);
+    return bindActionCreators({ authGet, userGet }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckAuth);

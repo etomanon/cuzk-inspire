@@ -15,4 +15,13 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
     res.redirect('/profile');  
 })
 
+router.get('/check', (req, res) => {
+    if(!req.user) {
+        res.status(200).json({auth: false, error: true})
+    }
+    else {
+        res.status(200).json({auth: true, error: false})
+    }
+})
+
 module.exports = router

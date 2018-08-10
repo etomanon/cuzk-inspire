@@ -20,9 +20,11 @@ const sessionOptions = {
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
 };
-if(process.env.NODE_ENV === 'production') {
-    // sessionOptions.cookie = { secure: true };
-}
+
+// if(process.env.NODE_ENV === 'production') {
+//     sessionOptions.cookie = { secure: true };
+// }
+
 app.use(session(sessionOptions));
 
 // init passport

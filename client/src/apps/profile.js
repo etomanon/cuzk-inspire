@@ -14,8 +14,10 @@ import cuzk from 'src/utils/cuzk';
 class Profile extends Component {
 
   componentDidMount = () => {
+    this.props.userGet();
+
     this.interval = setInterval(() => {
-      this.props.userGet()
+      this.props.userGet();
     }, 15000)
   }
 
