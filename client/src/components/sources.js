@@ -17,7 +17,7 @@ export default class Sources extends Component {
                 <Link className="nav-link-custom" to="/download/building">
                     <Card title='Buildings'
                         icon='fas fa-building'
-                        text='Get geometry for buildings in any town' />
+                        text='Get geometry for buildings in any town in the Czech Republic' />
                 </Link>
             </div>
         </div>

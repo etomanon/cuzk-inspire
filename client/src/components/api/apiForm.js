@@ -82,6 +82,9 @@ class ApiForm extends Component {
         if (this.state.help) {
             let el = this.state.help[this.state.index];
             switch (key) {
+                case 'Escape':
+                    this.setState({ index: -1, help: [] });
+                    break;
                 case 'Enter':
                     if (el !== undefined) {
                         this.setState({ search: el.name, level: getLevel(el.level) },
@@ -168,7 +171,9 @@ class ApiForm extends Component {
                         onChange={this.handleCheckbox} />
                         <label
                             ref={el => this.labelRef = el}
-                            className="custom-control-label mr-1" htmlFor="lower-admin">Download lower admin units</label>
+                            className="custom-control-label mr-1" htmlFor="lower-admin">
+                            Download lower admin units
+                        </label>
                     </div>
                     <Info
                         icon="far fa-question-circle"

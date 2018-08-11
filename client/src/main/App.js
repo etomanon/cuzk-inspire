@@ -12,6 +12,7 @@ import AdminUnit from 'src/apps/download/sources/adminUnit';
 import Building from 'src/apps/download/sources/building';
 import Error404 from 'src/apps/error404';
 
+import ScrollTop from 'src/components/scrollTop';
 import CheckAuth from 'src/components/checkAuth';
 import PageFade from 'src/components/pageFade';
 
@@ -26,17 +27,19 @@ class App extends Component {
         <TransitionGroup>
           <PageFade key={this.props.location.pathname}>
             <div className="text-center">
-              <CheckAuth location={this.props.location}>
-                <Switch location={this.props.location}>
-                  <Route exact path='/' component={Home} />
-                  <Route exact path='/profile' component={Profile} />
-                  <Route exact path='/download' component={Download} />
-                  <Route exact path='/download/admin-unit' component={AdminUnit} />
-                  <Route exact path='/download/building' component={Building} />
-                  <Route exact path='/404' component={Error404} />
-                  <Route render={() => <Redirect to="/404" />} />
-                </Switch>
-              </CheckAuth>
+              <ScrollTop>
+                <CheckAuth location={this.props.location}>
+                  <Switch location={this.props.location}>
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/profile' component={Profile} />
+                    <Route exact path='/download' component={Download} />
+                    <Route exact path='/download/admin-unit' component={AdminUnit} />
+                    <Route exact path='/download/building' component={Building} />
+                    <Route exact path='/404' component={Error404} />
+                    <Route render={() => <Redirect to="/404" />} />
+                  </Switch>
+                </CheckAuth>
+              </ScrollTop>
               <Footer />
             </div>
           </PageFade>

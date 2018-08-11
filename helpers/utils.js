@@ -1,8 +1,12 @@
 const extract = require('extract-zip');
 const ogr2ogr = require('ogr2ogr');
 const fs = require('fs-extra');
+const uuid = require('uuid')
+
+const cipher = require('../helpers/cipher')
 
 const AdminUnit = require('../models/adminUnit');
+const User = require('../models/user');
 
 const utils = {
     downloadError: (res, errorPath, message) => {
@@ -144,8 +148,29 @@ const utils = {
                 fs.unlink(el.path);
             }
         })
+    },
+    createToken: (resolve, reject) => {
+        if (resolve && reject) {
+            return utils.checkToken(resolve, reject);
+        }
+        return new Promise((resolve, reject) => {
+            return utils.checkToken(resolve, reject);
+        })
+    },
+    checkToken: (resolve, reject) => {
+        const token = uuid.v4();
+        const freeToken = cipher.encrypt(token);
+        User.findOne({ freeToken })
+            .then(userObject => {
+                if (userObject) {
+                    return utils.createToken(resolve, reject);
+                }
+                resolve(freeToken);
+            })
+            .catch(err => {
+                reject(err);
+            })
     }
-
 }
 
 module.exports = utils;

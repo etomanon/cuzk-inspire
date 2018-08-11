@@ -44,11 +44,7 @@ class Navigation extends Component {
   }
 
   renderProfile() {
-    return !this.props.user.profile.user ?
-      <li className="nav-item">
-        <a className="nav-link" href="/api/auth/google">Login</a>
-      </li>
-      :
+    return (this.props.user.profile.user && this.props.auth.auth) ?
       [
         <li key="download" className="nav-item">
           <NavLink onClick={this.handleToggle} className="nav-link"
@@ -64,6 +60,12 @@ class Navigation extends Component {
           <a className="nav-link" href="/api/auth/logout">Logout</a>
         </li>
       ]
+      :
+      <li className="nav-item">
+        <a className="nav-link" href="/api/auth/google">
+        Login with <i title="Google Plus" style={{color: "#DC4E42", fontSize: "1.25rem", verticalAlign: "text-bottom"}} className="fab fa-google-plus"></i></a>
+      </li>
+
   }
 
   handleToggle = () => {
@@ -108,7 +110,8 @@ class Navigation extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    auth: state.auth
   }
 }
 

@@ -1,8 +1,8 @@
 const router = require('express').Router()
 const checkAuth = require('../middleware/checkAuth')
-const uuid = require('uuid')
 const User = require('../models/user')
 const cipher = require('../helpers/cipher')
+const utils = require('../helpers/utils')
 
 router.get('/', checkAuth, (req, res) => {
     const freeToken = cipher.decrypt(req.user.freeToken);
@@ -21,13 +21,20 @@ router.post('/token', checkAuth, (req, res) => {
     User.findOne({ 'email': req.user.email, 'username': req.user.username })
         .exec()
         .then(result => {
-            const token = uuid.v4();
-            let freeToken = cipher.encrypt(token);
-            result.freeToken = freeToken;
-            result.save();
-            res.status(200).json({
-                token
-            });
+            utils.createToken()
+                .then(freeToken => {
+                    result.freeToken = freeToken;
+                    result.save();
+                    res.status(200).json({
+                        token: freeToken
+                    });
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err.message
+                    });
+                })
+            
         })
         .catch(err => {
             res.status(500).send({
